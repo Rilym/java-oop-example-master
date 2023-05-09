@@ -2,6 +2,7 @@ import java.util.ArrayList;
 class Library {
   public ArrayList<Book> books = new ArrayList<Book>();
   public ArrayList<Member> members = new ArrayList<Member>();
+  //
 
   public void addMember(Member member) {
     this.members.add(member);
