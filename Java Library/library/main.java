@@ -12,26 +12,27 @@ class Main {
     while (isContinue.equals("y")) {
       showMenu();
       int selectedMenu = chooseMenu();
-
-      if (selectedMenu == 1) {
-        showBooks();
-      } else if (selectedMenu == 2) {
-        showMembers();
-      } else if (selectedMenu == 3) {
-        addMember();
-      } else if (selectedMenu == 4) {
-        borrowBook();
-      } else if (selectedMenu == 5) {
-        returnBook();
-      } else if (selectedMenu == 6) {
-        addBook();
-      } else {
-        System.out.println("wrong input");
+      try {
+        if (selectedMenu == 1) {
+          showBooks();
+        } else if (selectedMenu == 2) {
+          showMembers();
+        } else if (selectedMenu == 3) {
+          addMember();
+        } else if (selectedMenu == 4) {
+          borrowBook();
+        } else if (selectedMenu == 5) {
+          returnBook();
+        } else if (selectedMenu == 6) {
+          addBook();
+        }
+      }catch (Exception e){
+        System.out.println("Silahkan Masukkan Angka");
       }
-
       System.out.print("continue ? ");
       isContinue = scan.next();
     }
+    showMenu();
   }
 
   public static void showMenu() {
@@ -79,8 +80,13 @@ class Main {
   }
 
   public static int chooseMenu() {
-    System.out.print("choose menu : ");
-    int pilihan = scan.nextInt();
+    int pilihan = 0;
+    try {
+      System.out.print("choose menu : ");
+      pilihan = scan.nextInt();
+    } catch (Exception e) {
+      System.out.println("Silahkan Masukkan Angka");
+    }
     return pilihan;
   }
 
@@ -95,30 +101,36 @@ class Main {
       System.out.println(member.id + " " + member.name);
     }
   }
-//From IntelIJ IDEA
+
   public static void addMember() {
 
     Member member = new Member();
 
     System.out.print("id : ");
-    member.id = scan.next();
-
-    System.out.print("name : ");
-    member.name = scan.next();
-
-    library.addMember(member);
+    try {
+      member.id = scan.next();
+      System.out.print("name : ");
+      member.name = scan.next();
+      library.addMember(member);
+    }catch (Exception e){
+      System.out.println("Mohon masukkan angka");
+    }
   }
   public static void addBook() {
+try {
+  Book book = new Book();
 
-    Book book = new Book();
+  System.out.print("id : ");
+  book.id = scan.next();
 
-    System.out.print("id : ");
-    book.id = scan.next();
+  System.out.print("title : ");
+  book.title = scan.next();
 
-    System.out.print("title : ");
-    book.title = scan.next();
+  library.addBook(book);
+}
+  catch (Exception e){
 
-    library.addBook(book);
+  }
   }
 
   public static void borrowBook() {

@@ -2,22 +2,24 @@ import java.util.ArrayList;
 class Library {
   public ArrayList<Book> books = new ArrayList<Book>();
   public ArrayList<Member> members = new ArrayList<Member>();
-  //
-
-  public void addMember(Member member) {
-    this.members.add(member);
-  }
 
 
   public Boolean isMemberIdExist(String id) {
-    Boolean isExist = false;
     for (Member member : this.members) {
-      if (member.id == id) {
-        isExist = true;
+      if (member.id.equals(id)) {
+        System.out.println("Id member Sudah terdaftar");
+        return true;
       }
     }
-    return isExist;
+    return false;
   }
+
+  public void addMember(Member member) {
+    if (!isMemberIdExist(member.id)) {
+      this.members.add(member);
+    }
+  }
+
   public void addBook(Book book) {
     this.books.add(book);
   }
