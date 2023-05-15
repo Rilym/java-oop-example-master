@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-//member
+//Inheritance
 class Member {
   public String id;
   public String name;

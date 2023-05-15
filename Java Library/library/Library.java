@@ -3,7 +3,7 @@ class Library {
   public ArrayList<Book> books = new ArrayList<Book>();
   public ArrayList<Member> members = new ArrayList<Member>();
 
-
+//Agar tidak bisa mengisi id yang sama
   public Boolean isMemberIdExist(String id) {
     for (Member member : this.members) {
       if (member.id.equals(id)) {
