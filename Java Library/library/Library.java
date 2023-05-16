@@ -1,9 +1,13 @@
 import java.util.ArrayList;
-class Library {
-  public ArrayList<Book> books = new ArrayList<Book>();
-  public ArrayList<Member> members = new ArrayList<Member>();
+abstract class Library {
+  public ArrayList<Book> books = new ArrayList<>();
+  public ArrayList<Member> members = new ArrayList<>();
 
-//Agar tidak bisa mengisi id yang sama
+  public abstract void addmember(Member member);
+  public abstract void showBooks(Book book);
+  public abstract void addBooks(Book book);
+
+//Agar tidak bisa mengisi id member yang sama
   public Boolean isMemberIdExist(String id) {
     for (Member member : this.members) {
       if (member.id.equals(id)) {
@@ -26,7 +30,7 @@ class Library {
   public Boolean isBookIdExist(String id) {
     Boolean isExist = false;
     for (Book book : this.books) {
-      if (book.id == id) {
+      if (book.getID().equals(id)) {
         isExist = true;
       }
     }
@@ -51,6 +55,7 @@ class Library {
     this.members.get(memberIndex).borrowedBooks.remove(book);
   }
 
+
   private int getMemberIndex(Member member) {
     return this.members.indexOf(member);
   }
@@ -66,10 +71,26 @@ class Library {
 
   private Book getBookById(String id) {
     for (Book book : this.books) {
-      if (book.id.equals(id)) {
+      if (book.getID().equals(id)) {
         return book;
       }
     }
     return null;
+  }
+}
+class librarykecil extends Library{
+  @Override
+  public void addmember(Member member) {
+    this.addMember(member);
+  }
+
+  @Override
+  public void showBooks(Book book) {
+    this.showBooks(book);
+  }
+
+  @Override
+  public void addBooks(Book book) {
+    this.addBooks(book);
   }
 }

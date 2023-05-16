@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 //Inheritance
-class Member {
+class Member{
   public String id;
   public String name;
   public ArrayList<Book> borrowedBooks = new ArrayList<Book>();

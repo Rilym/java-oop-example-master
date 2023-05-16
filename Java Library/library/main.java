@@ -2,7 +2,7 @@ import java.util.Scanner;
 class Main {
 
   static Scanner scan = new Scanner(System.in);
-  static Library library = new Library();
+  static Library library = new librarykecil();
 
   public static void main(String[] args) {
     initLibraryData();
@@ -42,21 +42,22 @@ class Main {
     System.out.println("3. add member");
     System.out.println("4. borrow book");
     System.out.println("5. return book");
+    System.out.println("6. add book");
     System.out.println("================================");
   }
 
   public static void initLibraryData() {
     Book book1 = new Book();
-    book1.id = "1";
-    book1.title = "pemrograman java";
+    book1.setId("1");
+    book1.setTitle("pemrograman java");
 
     Book book2 = new Book();
-    book2.id = "2";
-    book2.title = "pemrograman oop";
+    book2.setId("2");
+    book2.setTitle("pemrograman oop");
 
     Book book3 = new Book();
-    book3.id = "3";
-    book3.title = "pemrograman android";
+    book3.setId("3");
+    book3.setTitle("pemrograman android");
 
     Member member1 = new Member();
     member1.id = "1";
@@ -92,7 +93,7 @@ class Main {
 
   public static void showBooks() {
     for (Book book : library.books) {
-      System.out.println(book.id + " " + book.title);
+      System.out.println(book.getID() + " " + book.getTitle());
     }
   }
 
@@ -113,7 +114,7 @@ class Main {
       member.name = scan.next();
       library.addMember(member);
     }catch (Exception e){
-      System.out.println("Mohon masukkan angka");
+      System.out.println("Mohon masukkan angka untuk id");
     }
   }
   public static void addBook() {
@@ -121,19 +122,20 @@ try {
   Book book = new Book();
 
   System.out.print("id : ");
-  book.id = scan.next();
+  book.setId(""); scan.next();
 
   System.out.print("title : ");
-  book.title = scan.next();
+  book.setTitle(""); scan.next();
 
   library.addBook(book);
 }
   catch (Exception e){
-
+  System.out.println("Masukkan Angka untuk id");
   }
   }
 
   public static void borrowBook() {
+
     System.out.print("id member : ");
     String memberId = scan.next();
 
